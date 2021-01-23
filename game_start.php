@@ -4,12 +4,29 @@ include_once "includes/connection.php";
 if (!$_SESSION){
     header('Location: index.php');
 }
-echo "Succes " . $_SESSION["username"] . "!</br >";
 
+?>
+
+
+
+<div class="jumbotron text-center">
+  <h1>Succes <?php echo $_SESSION["username"] ?>!</h1>
+  <?php
+  if(isset($_SESSION['score'])){
+    
+        echo "<p>Score: " . $_SESSION['score'] . "</p>";
+        
+  }
+
+  ?>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-12 text-center">
+<?php
 if (!isset($_SESSION['score'])){
     $_SESSION['score'] = 0;
-}elseif ($_SESSION['score'] > 0){
-    echo "Score: " . $_SESSION['score'] . "</br >";
 }
 
 
@@ -75,31 +92,36 @@ $randomNumber2= rand(1,$maxNumber);
 $actionSum = $som[rand(0, count($som) - 1)];
 
 ?>
-    <form action="functions/checkAnswer.php" method="post">
+    <form action="functions/checkAnswer.php" method="post" class="justify-content-center">
 <?php
+
 if($actionSum == "-"){
     $answer = $randomNumber1 - $randomNumber2;
     $_SESSION['answer'] = $answer;
-    echo $randomNumber1 . " - " . $randomNumber2 . " = <input type='text' name='guessedAnswer'>";
+    echo "<h2 style='text-align:center;'>" . $randomNumber1 . " - " . $randomNumber2 . "</h2>" . "<div class='form-group'><input style='text-align:center;' type='text' name='guessedAnswer' class='form-control'></div>";
 }elseif ($actionSum == "+"){
     $answer = $randomNumber1 + $randomNumber2;
     $_SESSION['answer'] = $answer;
-    echo $randomNumber1 . " + " . $randomNumber2 . " = <input type='text' name='guessedAnswer'>";
+    echo "<h2 style='text-align:center;'>" . $randomNumber1 . " + " . $randomNumber2 . "</h2>" . "<div class='form-group'><input style='text-align:center;' type='text' name='guessedAnswer' class='form-control'></div>";
 }elseif ($actionSum == "/"){
     $answer = $randomNumber1 / $randomNumber2;
     $_SESSION['answer'] = $answer;
-    echo $randomNumber1 . " / " . $randomNumber2 . " = <input type='text' name='guessedAnswer'>";
+    echo "<h2 style='text-align:center;'>" . $randomNumber1 . " / " . $randomNumber2 . "</h2>" . "<div class='form-group'><input style='text-align:center;' type='text' name='guessedAnswer' class='form-control'></div>";
 }else{
     $answer = $randomNumber1 * $randomNumber2;
     $_SESSION['answer'] = $answer;
-    echo $randomNumber1 . " * " . $randomNumber2 . " = <input type='text' name='guessedAnswer'>";
+    echo "<h2 style='text-align:center;'>" . $randomNumber1 . " * " . $randomNumber2 . "</h2>" . "<div class='form-group'><input style='text-align:center;' type='text' name='guessedAnswer' class='form-control'></div>";
 }
 ?>
-    <br />
-    <input type="submit" name="submit" value="Check">
-    <a href="index.php">Stoppen</a>
+
+<button type="submit" value="Controleer" name="submit" class="btn btn-warning">Controleer</button>
+
 
 </form>
+<a href="index.php" class="btn btn-danger" role="button">Stoppen</a> 
+</div>
+</div>
+</div>
 <?php
 
 

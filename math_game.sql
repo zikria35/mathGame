@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 05 jan 2021 om 12:16
--- Serverversie: 10.3.16-MariaDB
--- PHP-versie: 7.3.7
+-- Gegenereerd op: 23 jan 2021 om 09:49
+-- Serverversie: 10.4.17-MariaDB
+-- PHP-versie: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,15 +32,11 @@ USE `math_game`;
 CREATE TABLE `users` (
   `gebruikersnaam` varchar(30) NOT NULL,
   `score` int(11) NOT NULL,
-  `wachtwoord` varchar(255) NOT NULL
+  `wachtwoord` varchar(255) NOT NULL,
+  `keuze` varchar(5) DEFAULT NULL,
+  `saldo` int(11) NOT NULL DEFAULT 0,
+  `currentChar` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Gegevens worden geëxporteerd voor tabel `users`
---
-
-INSERT INTO `users` (`gebruikersnaam`, `score`, `wachtwoord`) VALUES
-('zikria', 8, 'test123');
 
 --
 -- Indexen voor geëxporteerde tabellen

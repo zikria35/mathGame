@@ -10,8 +10,9 @@ if(isset($_POST['submit'])){
     if ($query = mysqli_query($conn, "INSERT INTO users (gebruikersnaam, wachtwoord) VALUES('$gebruikersnaam', '$wachtwoord')")){
 
         $_SESSION["username"] = $gebruikersnaam;
-        header('Location: ../game.php');
+        header('Location: ../makeChoice.php');
     }else{
-        echo "Gebruikersnaam al in gebruik! </br> <a href='../index.php'>Opnieuw</a>";
+        echo "Gebruikersnaam al in gebruik! </br> <a href='../index.php' class='btn btn-warning' role='button'>Opnieuw</a> ";
+        
     }
 }
